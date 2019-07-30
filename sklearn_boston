@@ -1,0 +1,11 @@
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import median_absolute_error, r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_boston
+boston = load_boston()
+X_train, X_test, y_train, y_test = train_test_split(boston.data, boston.target, random_state=1)
+regr = LinearRegression()
+regr.fit(X_train, y_train)
+y_pred = regr.predict(X_test)
+print(r2_score(y_test, y_pred)) 
+print(median_absolute_error(y_test, y_pred))
