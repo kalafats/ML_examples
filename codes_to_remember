@@ -1,0 +1,3 @@
+#get only the columns with numerical values
+mydataframe.select_dtypes(exclude='object')
+
