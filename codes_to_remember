@@ -1,3 +1,16 @@
 #get only the columns with numerical values
 mydataframe.select_dtypes(exclude='object')
 
+#returns a df with True/False, indicating whether each element is null or not
+mydataframe.isnull()
+
+#returns a series with shape = (# of features,) indicating sum of null values in that column. 
+mydataframe.isnull().sum()
+
+# get the names of cols with missing values
+cols_with_missing = [col for col in mydataframe.columns
+                     if mydataframe[col].isnull().any()]
+                     
+# removes cols with missing values
+reduced_df = mydataframe.drop(cols_with_missing, axis=1)
+
